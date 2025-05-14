@@ -105,49 +105,52 @@
           <div class="client5 clientdown td"><img src="https://cdn-icons-png.flaticon.com/128/1/1110.png"/><div class="td_header"></div><div class="td_body"></div></div>
           <div class="client6 clientdown td"><img src="https://cdn-icons-png.flaticon.com/128/1/1110.png"/><div class="td_header"></div><div class="td_body"></div></div>
         </div>      
-      </div>   
+      </div>  
     <script>        
         $(document).ready(function() {
-        const reviews = [
-          {
-            "title": "Отличный продукт!",
-            "text": "Очень доволен покупкой, всё работает прекрасно, без нареканий."
-          },
-          {
-            "title": "Не соответствует описанию",
-            "text": "Товар пришёл в повреждённой упаковке, а функционал ограничен."
-          },
-          {
-            "title": "Быстрая доставка",
-            "text": "Заказал утром, вечером уже получил. Качество на высоте!"
-          },
-          {
-            "title": "Разочарован",
-            "text": "Ожидал большего за такие деньги. Материал дешёвый, быстро сломался."
-          },
-          {
-            "title": "Рекомендую!",
-            "text": "Отличное соотношение цены и качества. Пользуюсь уже месяц — всё отлично."
-          },
-          {
-            "title": "Средненько",
-            "text": "Неплохой товар, но есть мелкие недочёты. В целом устраивает."
-          },         
-        ];
+  const reviews = `
+        [
+            {
+              "title": "Отличный продукт!",
+              "text": "Очень доволен покупкой, всё работает прекрасно, без нареканий."
+            },
+            {
+              "title": "Не соответствует описанию",
+              "text": "Товар пришёл в повреждённой упаковке, а функционал ограничен."
+            },
+            {
+              "title": "Быстрая доставка",
+              "text": "Заказал утром, вечером уже получил. Качество на высоте!"
+            },
+            {
+              "title": "Разочарован",
+              "text": "Ожидал большего за такие деньги. Материал дешёвый, быстро сломался."
+            },
+            {
+              "title": "Рекомендую!",
+              "text": "Отличное соотношение цены и качества. Пользуюсь уже месяц — всё отлично."
+            },
+            {
+              "title": "Средненько",
+              "text": "Неплохой товар, но есть мелкие недочёты. В целом устраивает."
+            }
+          ]`;
 
-          const tdHeaders = $("#myTable .td_header").toArray();
-          const tdBodies = $("#myTable .td_body").toArray();
-    
-          if (tdHeaders.length !== reviews.length || tdBodies.length !== reviews.length) {
-              console.error("Недостаточно элементов td_header или td_body для отображения всех отзывов.");
-              return; 
-          }
+  const reviewsArray = JSON.parse(reviews);
 
-          for (let i = 0; i < reviews.length; i++) {
-              $(tdHeaders[i]).text(reviews[i].title); 
-              $(tdBodies[i]).text(reviews[i].text);   
-          }
-        });       
+  const tdHeaders = $("#myTable .td_header").toArray();
+  const tdBodies = $("#myTable .td_body").toArray();
+
+  if (tdHeaders.length !== reviewsArray.length || tdBodies.length !== reviewsArray.length) {
+    console.error("Недостаточно элементов td_header или td_body для отображения всех отзывов.");
+    return;
+  }
+
+  for (let i = 0; i < reviewsArray.length; i++) {
+    $(tdHeaders[i]).text(reviewsArray[i].title);
+    $(tdBodies[i]).text(reviewsArray[i].text);
+  }
+});
              
        $(document).ready(function () {                
           function validateForm() {
