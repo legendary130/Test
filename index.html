@@ -292,126 +292,87 @@
           }   
           .probel{
             height: 50px;
-          }         
-          @media (max-width: 570px){
-            .Basa {
-              width: 300px;
-            }
-            .form-control-sm-button{
-                width: 250px  
-            }          
-            .test{
-              font-size: x-large;
-            }
-            #myTable {
-                border: 0;
-                display: flex;
-                justify-content: center;
-            }        
-            .tr {
-                margin-left: 25%;
-              margin-bottom: 10px;          
-              display: block; 
-                flex-wrap: wrap;
-                flex-direction: column;
-                width: 100%;        
-            }
-            .td {
-                display: block; 
-                border: none;           
-            } 
-            .commend_form3{
-              display: flex;
-              justify-content: left;
-              margin-left: 25%;
-              width: 80%;
-            }            
           }   
-          @media (max-width: 395px){
-            .test{
-              font-size: medium;
-            }
-            .Basa {
-              width: 200px;
-            }
-            .form-control-sm-button{
-                width: 130px;
-                height: 20px;
-                font-size: x-small;   
-            }
-            #myTable {
-                width: 150px;         
-                border: 0;
-            display: flex;            
-            }       
-            .tr {                   
-              margin-bottom: 10px;   
-              margin-left: 50px;        
-                width: 100%;            
-            }  
-            .td {
-                display: block; 
-                border: none;
-                position: relative;             
-            }
-            label{
-              font-size: x-small;
-            }
-            #button1{
-              position: relative; top: 20px; 
-            }
-            .commend_form3{
-              display: flex;
-              justify-content: left;
-              margin-left: 50px;
-            }            
-          }
-          @media (max-width: 300px){
-          .test{
-            font-size: smaller;
-          }
-          .Basa {
-            width: 150px;
-          }
-          .form-control-sm-button{
-              width: 100px;
-              margin-left: 10px;
-  
-          }      
-          .tr {
-            margin-left: 1%;
-            margin-bottom: 10px;
-              display: block; 
-              width: 80%;
-              
-          }
-          .td {
-            display: block; 
-            border: none;                  
-          }      
-          #myTable {
-            width: 150px;         
-            display: flex;
-            
-          }
-          
-          .Form3{
-            width: 100%;
-            height: 100%;
-            margin: 0 auto;
-          }
-          .commend_form3{
-            display: flex;
-            justify-content: left;
-            width: 20%;
-            margin-left: 1%;
-          }  
-          }
           .Form3{
             width: 600px;
             height: 400px;
             margin: 0 auto;
-          }
+          }      
+          @media (max-width: 1024px) {
+
+.Basa1form,
+.Basa2form {
+  width: 95%; /* Увеличиваем ширину на небольших экранах */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-control-sm-button {
+  width: 99.9%; 
+  margin-left: auto;
+  margin-right: auto; /* Центрируем кнопку */
+  display: block; /* Убираем возможные inline-блоки */
+}
+.test {
+    font-size: 1.2em; /* Уменьшаем шрифт заголовка на небольших экранах */
+}
+.Form3{
+  width: 95%;
+  height: 400px;
+}
+#myTable 
+{
+  width: 99%;
+  font-size: small;
+  display: flex; 
+  flex-direction: column; 
+}
+
+.td {
+  width: 30%; 
+  padding: 30px;
+  display: flex; 
+  flex-direction: column;box-sizing: border-box; 
+}
+}
+
+/* Дополнительная адаптивность для меньших экранов (опционально) */
+@media (max-width: 768px) {
+.Basa1form,
+.Basa2form {
+  padding: 15px; /* Уменьшаем отступы */
+}
+.form-control-sm-button {
+    max-width: none; /* Убираем ограничение ширины кнопки на очень маленьких экранах */
+}
+}
+@media (max-width:425px){
+  .td_header{
+    font-size: small;
+  }
+  .td_body{
+    font-size: small;
+  }
+  .td{
+    padding: 10px;
+  }
+}
+@media (max-width:320px){
+  .td_header{
+    font-size: x-small;
+  }
+  .td_body{
+    font-size: x-small;
+  }
+  .td{
+    padding: 10px;
+  }
+  img{
+    width: 10px;
+    height: 10px;
+    position: relative; top: 12px; right: 15px;
+  }
+}
         </style>
       </div>   
   </div>
