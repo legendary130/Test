@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тестовое задание</title>
@@ -11,7 +11,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </head>
 <body>   
     <h1 align="center" class="test"><b>Тестовое задание СмартСофт</b></h1>
@@ -108,43 +107,83 @@
         </div>      
       </div>   
     <script>        
-        const $commend1='Ясность нашей позиции очевидна: разбавленное изрядной долей эмпатии, рациональное мышление говорит о возможностях поставленных обществом задач. Не следует, однако, забывать, что понимание сути ресурсосберегающих технологий обеспечивает широкому кругу (специалистов) участие в формировании поэтапного и последовательного развития общества.'
-        const $commend2='Картельные сговоры не допускают ситуации, при которой некоторые особенности внутренней политики, которые представляют собой яркий пример континентально-европейского типа политической культуры, будут ассоциативно распределены по отраслям.'
-        const $commend3='Предвариональное мышление прассового участия.';
-        const myArray_body = [
-          $commend2, $commend2, $commend1,
-          $commend1, $commend3, $commend2
+        $(document).ready(function() {
+        const reviews = [
+          {
+            "title": "Отличный продукт!",
+            "text": "Очень доволен покупкой, всё работает прекрасно, без нареканий."
+          },
+          {
+            "title": "Не соответствует описанию",
+            "text": "Товар пришёл в повреждённой упаковке, а функционал ограничен."
+          },
+          {
+            "title": "Быстрая доставка",
+            "text": "Заказал утром, вечером уже получил. Качество на высоте!"
+          },
+          {
+            "title": "Разочарован",
+            "text": "Ожидал большего за такие деньги. Материал дешёвый, быстро сломался."
+          },
+          {
+            "title": "Рекомендую!",
+            "text": "Отличное соотношение цены и качества. Пользуюсь уже месяц — всё отлично."
+          },
+          {
+            "title": "Средненько",
+            "text": "Неплохой товар, но есть мелкие недочёты. В целом устраивает."
+          },         
         ];
+
+          const tdHeaders = $("#myTable .td_header").toArray();
+          const tdBodies = $("#myTable .td_body").toArray();
+    
+          if (tdHeaders.length !== reviews.length || tdBodies.length !== reviews.length) {
+              console.error("Недостаточно элементов td_header или td_body для отображения всех отзывов.");
+              return; 
+          }
+
+          for (let i = 0; i < reviews.length; i++) {
+              $(tdHeaders[i]).text(reviews[i].title); 
+              $(tdBodies[i]).text(reviews[i].text);   
+          }
+        });       
+        // const $commend2='Картельные сговоры не допускают ситуации, при которой некоторые особенности внутренней политики, которые представляют собой яркий пример континентально-европейского типа политической культуры, будут ассоциативно распределены по отраслям.'
+        // const $commend3='Предвариональное мышление прассового участия.';
+        // const myArray_body = [
+        //   $commend2, $commend2, $commend1,
+        //   $commend1, $commend3, $commend2
+        // ];
        
-        const table = document.getElementById("myTable");
-        const tdBodies = table.querySelectorAll(".td_body");
+        // const table = document.getElementById("myTable");
+        // const tdBodies = table.querySelectorAll(".td_body");
     
        
-        if (tdBodies.length !== myArray_body.length) {
-          console.error("Количество div-ов с классом td_body не соответствует количеству значений в массиве.");
-        } else {
+        // if (tdBodies.length !== myArray_body.length) {
+        //   console.error("Количество div-ов с классом td_body не соответствует количеству значений в массиве.");
+        // } else {
           
-          for (let i = 0; i < myArray_body.length; i++) {
-            tdBodies[i].textContent = myArray_body[i];
-          }
-        }
+        //   for (let i = 0; i < myArray_body.length; i++) {
+        //     tdBodies[i].textContent = myArray_body[i];
+        //   }
+        // }
         
-        const $header1='Пойдёт, но есть нюанс'
-        const $header2='Нормально, а теперь подробней'
-        const $header3='Не очень и вот почему'
-        const myArray_header = [
-          $header2, $header1, $header3,
-          $header3, $header2, $header1
-        ];
-        const tdHeader = table.querySelectorAll(".td_header");
-        if (tdHeader.length !== myArray_header.length) {
-          console.error("Количество div-ов с классом td_body не соответствует количеству значений в массиве.");
-        } else {
+        // const $header1='Пойдёт, но есть нюанс.'
+        // const $header2='Нормально, а теперь подробней.'
+        // const $header3='Не очень и вот почему.'
+        // const myArray_header = [
+        //   $header2, $header1, $header3,
+        //   $header3, $header2, $header1
+        // ];
+        // const tdHeader = table.querySelectorAll(".td_header");
+        // if (tdHeader.length !== myArray_header.length) {
+        //   console.error("Количество div-ов с классом td_body не соответствует количеству значений в массиве.");
+        // } else {
           
-          for (let i = 0; i < myArray_header.length; i++) {
-            tdHeader[i].textContent = myArray_header[i];
-          }
-        }
+        //   for (let i = 0; i < myArray_header.length; i++) {
+        //     tdHeader[i].textContent = myArray_header[i];
+        //   }
+        // }
         
         
        $(document).ready(function () {                
@@ -211,8 +250,10 @@
           $.ajax({
             url: 'http://127.0.0.1', 
             method: 'post',
-            data: {html:"Имя:"+$('.js_name_form1').val()+"\n"+'Фамилия:'+$('.js_familiy_form1').val()+"\n"+'Почта:'+$('.js_email_form1').val()+"\n"+'Сообщение:'+$('.js_commend_form1').val(),},
-            
+            data: {name:$('.js_name_form1').val(),
+            surname:$('.js_familiy_form1').val(),
+            email:$('.js_email_form1').val(),
+            commend:$('.js_commend_form1').val(),},    
             success: function(data){
               
               alert(data);
@@ -282,10 +323,11 @@
           .form-control-sm-button{
             color: white;
             background-color: black;
-            width: 550px;
+            width: 580px;
             display: flex;
             margin: 0 auto;
-            border-radius: 16%;
+            border-radius: 5px;
+            height: 28px;
           }   
           .probel{
             height: 50px;
@@ -350,7 +392,7 @@
                 display: block; 
                 border: none;
                 position: relative;             
-            }н
+            }
             label{
               font-size: x-small;
             }
