@@ -148,44 +148,7 @@
               $(tdBodies[i]).text(reviews[i].text);   
           }
         });       
-        // const $commend2='Картельные сговоры не допускают ситуации, при которой некоторые особенности внутренней политики, которые представляют собой яркий пример континентально-европейского типа политической культуры, будут ассоциативно распределены по отраслям.'
-        // const $commend3='Предвариональное мышление прассового участия.';
-        // const myArray_body = [
-        //   $commend2, $commend2, $commend1,
-        //   $commend1, $commend3, $commend2
-        // ];
-       
-        // const table = document.getElementById("myTable");
-        // const tdBodies = table.querySelectorAll(".td_body");
-    
-       
-        // if (tdBodies.length !== myArray_body.length) {
-        //   console.error("Количество div-ов с классом td_body не соответствует количеству значений в массиве.");
-        // } else {
-          
-        //   for (let i = 0; i < myArray_body.length; i++) {
-        //     tdBodies[i].textContent = myArray_body[i];
-        //   }
-        // }
-        
-        // const $header1='Пойдёт, но есть нюанс.'
-        // const $header2='Нормально, а теперь подробней.'
-        // const $header3='Не очень и вот почему.'
-        // const myArray_header = [
-        //   $header2, $header1, $header3,
-        //   $header3, $header2, $header1
-        // ];
-        // const tdHeader = table.querySelectorAll(".td_header");
-        // if (tdHeader.length !== myArray_header.length) {
-        //   console.error("Количество div-ов с классом td_body не соответствует количеству значений в массиве.");
-        // } else {
-          
-        //   for (let i = 0; i < myArray_header.length; i++) {
-        //     tdHeader[i].textContent = myArray_header[i];
-        //   }
-        // }
-        
-        
+             
        $(document).ready(function () {                
           function validateForm() {
               const isNameFilled = $('.js_name').val().trim() !== '';
@@ -223,25 +186,23 @@
             "Условия договора-оферты: "+(myVariable ? 'Приняты' : 'Не приняты')                          
             });             
           }); 
-              $(document).ready(function() {
+          $(document).ready(function() {
+  
         function validateForm2() {
-        const $name_form1 = $('.js_name_form1').val().trim() !== '';
-        const $familiy_form1 = $('.js_familiy_form1').val().trim() !== '';
+          const $name_form1_value = $('.js_name_form1').val().trim();
+          const isNameValid = $name_form1_value.length >= 3; 
+          const $familiy_form1 = $('.js_familiy_form1').val().trim() !== '';
+          const $email_form1_value = $('.js_email_form1').val().trim();
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  
+          const $email_form1 = emailRegex.test($email_form1_value);
+          const $commend_form1 = $('.js_commend_form1').val().trim() !== '';
 
-        // Валидация email с использованием регулярного выражения
-        const $email_form1_value = $('.js_email_form1').val().trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  // Простое регулярное выражение для email
-        const $email_form1 = emailRegex.test($email_form1_value);
-        
-        const $commend_form1 = $('.js_commend_form1').val().trim() !== '';
-
-        const isFormValid2 = $name_form1 && $familiy_form1 && $email_form1 && $commend_form1;
-        $('.js_button_send').prop('disabled', !isFormValid2);
+          const isFormValid2 = isNameValid && $familiy_form1 && $email_form1 && $commend_form1; 
+          $('.js_button_send').prop('disabled', !isFormValid2);
         }
-
-        $('.js_name_form1, .js_familiy_form1, .js_email_form1, .js_commend_form1').on('input', validateForm2);
-
-        validateForm2();
+          $('.js_name_form1, .js_familiy_form1, .js_email_form1, .js_commend_form1').on('input', validateForm2);
+          validateForm2();
+          });
 
         const button = document.querySelector(".js_button_send");
 
@@ -262,7 +223,7 @@
             });
           });
         });
-        });
+        
         </script> 
         <style>
           input:invalid {
