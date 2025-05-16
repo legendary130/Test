@@ -93,7 +93,7 @@
       <div name="day" style="color: gray; font-size: small;" class="commend_form3">Популярные отзывы наших клиентов</div>
            
     
-      <div id="myTable">
+       <!-- <div id="myTable">
         <div class="tr">
           <div class="client1 clienttop td"><img src="https://cdn-icons-png.flaticon.com/128/1/1110.png"/><div  class="td_header"></div><div class="td_body"></div></div>
           <div class="client2 clienttop td"><img src="https://cdn-icons-png.flaticon.com/128/1/1110.png"/><div class="td_header"></div><div class="td_body"></div></div>
@@ -105,10 +105,10 @@
           <div class="client5 clientdown td"><img src="https://cdn-icons-png.flaticon.com/128/1/1110.png"/><div class="td_header"></div><div class="td_body"></div></div>
           <div class="client6 clientdown td"><img src="https://cdn-icons-png.flaticon.com/128/1/1110.png"/><div class="td_header"></div><div class="td_body"></div></div>
         </div>      
-      </div>  
+      </div>    -->
     <script>        
-        $(document).ready(function() {
-  const reviews = `
+   $(document).ready(function() {
+  const json = `
         [
             {
               "title": "Отличный продукт!",
@@ -133,26 +133,50 @@
             {
               "title": "Средненько",
               "text": "Неплохой товар, но есть мелкие недочёты. В целом устраивает."
+            },
+            {
+              "title": "Средненько",
+              "text": "Неплохой товар, но есть мелкие недочёты. В целом устраивает."
+            },
+            {
+              "title": "Средненько",
+              "text": "Неплохой товар, но есть мелкие недочёты. В целом устраивает."
+            },
+            {
+              "title": "Средненько",
+              "text": "Неплохой товар, но есть мелкие недочёты. В целом устраивает."
             }
           ]`;
 
-  const reviewsArray = JSON.parse(reviews);
+  const data = JSON.parse(json);
+  const table = $('<div id="myTable"></div>');
 
-  const tdHeaders = $("#myTable .td_header").toArray();
-  const tdBodies = $("#myTable .td_body").toArray();
-
-  if (tdHeaders.length !== reviewsArray.length || tdBodies.length !== reviewsArray.length) {
-    console.error("Недостаточно элементов td_header или td_body для отображения всех отзывов.");
-    return;
+  // Разбиваем данные на группы по 3 элемента
+  for (let i = 0; i < data.length; i += 3) {
+    const rowItems = data.slice(i, i + 3);
+    const isTopRow = i === 0; // Первая строка получает класс clienttop
+    
+    const tr = $('<div class="tr"></div>');
+    
+    rowItems.forEach((item, index) => {
+      const clientNumber = i + index + 1;
+      const td = $(`
+        <div class="client${clientNumber} ${isTopRow ? 'clienttop' : 'clientdown'} td">
+          <img src="https://cdn-icons-png.flaticon.com/128/1/1110.png"/>
+          <div class="td_header">${item.title}</div>
+          <div class="td_body">${item.text}</div>
+        </div>
+      `);
+      tr.append(td);
+    });
+    
+    table.append(tr);
   }
 
-  for (let i = 0; i < reviewsArray.length; i++) {
-    $(tdHeaders[i]).text(reviewsArray[i].title);
-    $(tdBodies[i]).text(reviewsArray[i].text);
-  }
+  $('body').append(table);
 });
-             
-       $(document).ready(function () {                
+       
+        $(document).ready(function () {                
           function validateForm() {
               const isNameFilled = $('.js_name').val().trim() !== '';
               const isAddressSelected = $('.js_adress').val() !== null && $('.js_adress').val() !== '';
@@ -237,6 +261,7 @@
             font-size: small;
             display: flex; 
             flex-direction: column; 
+            margin: auto;
           }
           .tr {
             display: flex; 
@@ -247,7 +272,8 @@
             width: 30%; 
             padding: 20px;
             display: flex; 
-            flex-direction: column;box-sizing: border-box; 
+            flex-direction: column;
+            box-sizing: border-box; 
           }
           .td_header {
             font-weight: bold;
@@ -298,84 +324,87 @@
           }   
           .Form3{
             width: 600px;
-            height: 400px;
+            height: 50px;
             margin: 0 auto;
           }      
           @media (max-width: 1024px) {
 
-.Basa1form,
-.Basa2form {
-  width: 95%; /* Увеличиваем ширину на небольших экранах */
-  margin-left: auto;
-  margin-right: auto;
-}
+            .Basa1form,
+            .Basa2form {
+              width: 95%; /* Увеличиваем ширину на небольших экранах */
+              margin-left: auto;
+              margin-right: auto;
+            }
 
-.form-control-sm-button {
-  width: 99.9%; 
-  margin-left: auto;
-  margin-right: auto; /* Центрируем кнопку */
-  display: block; /* Убираем возможные inline-блоки */
-}
-.test {
-    font-size: 1.2em; /* Уменьшаем шрифт заголовка на небольших экранах */
-}
-.Form3{
-  width: 95%;
-  height: 400px;
-}
-#myTable 
-{
-  width: 99%;
-  font-size: small;
-  display: flex; 
-  flex-direction: column; 
-}
+            .form-control-sm-button {
+              width: 99.9%; 
+              margin-left: auto;
+              margin-right: auto; /* Центрируем кнопку */
+              display: block; /* Убираем возможные inline-блоки */
+            }
+            .test {
+                font-size: 1.2em; /* Уменьшаем шрифт заголовка на небольших экранах */
+            }
+            .Form3{
+              width: 95%;
+              height: 50px;
+            }
+            #myTable 
+            {
+              width: 99%;
+              font-size: small;
+              display: flex; 
+              flex-direction: column; 
+            }
 
-.td {
-  width: 30%; 
-  padding: 30px;
-  display: flex; 
-  flex-direction: column;box-sizing: border-box; 
-}
-}
+            .td {
+              width: 30%; 
+              padding: 30px;
+              display: flex; 
+              flex-direction: column;box-sizing: border-box; 
+            }
+            }
 
-/* Дополнительная адаптивность для меньших экранов (опционально) */
-@media (max-width: 768px) {
-.Basa1form,
-.Basa2form {
-  padding: 15px; /* Уменьшаем отступы */
-}
-.form-control-sm-button {
-    max-width: none; /* Убираем ограничение ширины кнопки на очень маленьких экранах */
-}
-}
-@media (max-width:425px){
-  .td_header{
-    font-size: small;
-  }
-  .td_body{
-    font-size: small;
-  }
-  .td{
-    padding: 10px;
-  }
-}
-@media (max-width:320px){
-  .td_header{
-    font-size: x-small;
-  }
-  .td_body{
-    font-size: x-small;
-  }
-  .td{
-    padding: 10px;
-  }
-  img{
-    width: 10px;
-    height: 10px;
-    position: relative; top: 12px; right: 15px;
-  }
-}
+            /* Дополнительная адаптивность для меньших экранов (опционально) */
+            @media (max-width: 768px) {
+            .Basa1form,
+            .Basa2form {
+              padding: 15px; /* Уменьшаем отступы */
+            }
+            .form-control-sm-button {
+                max-width: none; /* Убираем ограничение ширины кнопки на очень маленьких экранах */
+            }
+            }
+            @media (max-width:425px){
+              #myTable {
+                width: 85%;
+              }
+              .td_header{
+                font-size: x-small;
+              }
+              .td_body{
+                font-size: x-small;
+              }
+              .td{
+                padding: 10px;
+              }
+            }
+            @media (max-width:320px){
+              .td_header{
+                font-size: x-small;
+              }
+              .td_body{
+                font-size: x-small;
+              }
+              .td{
+                padding: 10px;
+              }
+              img{
+                width: 10px;
+                height: 10px;
+                position: relative; top: 12px; right: 15px;
+              }
+            }
         </style>
       </div>   
   </div>
